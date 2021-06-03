@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "subspacebubbleburster",
+  "version": "${version}",
+
+  "name": "Subspace Bubble Burster",
+  "description": "Nerfs nether travel",
+  "authors": [
+    "SFort"
+  ],
+  "contact": {
+    "sources": "https://github.com/SFort/MC-subspacebubbleburster"
+  },
+
+  "license": "MIT",
+
+  "environment": "*",
+  "mixins": [
+    "subspacebubbleburster.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": "*",
+    "minecraft": "*"
+  }
+}

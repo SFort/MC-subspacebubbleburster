@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "tf.ssf.sfort.subspacebubbleburster.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "plugin": "tf.ssf.sfort.subspacebubbleburster.mixin.Config",
+  "mixins": [
+    "Dim"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

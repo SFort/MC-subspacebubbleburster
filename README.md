@@ -1,4 +1,5 @@
 Server-side
 # MC-SubspaceBubbleBurster
-Intended to nerf nether travel by making nether portals return the player to the same portal they entered through 
-(can be configured to only work at certain ranges)
+Configurable nether scale
+minecraft by default makes the nether 8x smaller
+this mod makes that multiplier configurable

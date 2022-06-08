@@ -1,21 +1,20 @@
 package tf.ssf.sfort.subspacebubbleburster.mixin;
 
-import net.minecraft.world.dimension.DimensionType;
-import org.spongepowered.asm.mixin.Final;
+import net.minecraft.world.dimension.DimensionTypeRegistrar;
+import net.minecraft.world.dimension.DimensionTypes;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import org.spongepowered.asm.mixin.injection.ModifyArgs;
+import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
-@Mixin(value = DimensionType.class, priority = 1612)
+@Mixin(DimensionTypeRegistrar.class)
 public abstract class Dim {
 
-	@Shadow @Final protected static DimensionType THE_NETHER;
-
-	@Inject(method= "getCoordinateScaleFactor", at=@At("HEAD"), cancellable = true)
-	private static void change_scale(DimensionType dimensionType, DimensionType dimensionType2, CallbackInfoReturnable<Double> cir){
-		if(dimensionType.equals(THE_NETHER)) cir.setReturnValue(Config.netherScale / dimensionType2.getCoordinateScale());
-		else if(dimensionType2.equals(THE_NETHER)) cir.setReturnValue(dimensionType.getCoordinateScale() / Config.netherScale);
+	@ModifyArgs(method= "initAndGetDefault", at=@At(value = "INVOKE", target = "Lnet/minecraft/world/dimension/DimensionType;<init>(Ljava/util/OptionalLong;ZZZZDZZIIILnet/minecraft/tag/TagKey;Lnet/minecraft/util/Identifier;FLnet/minecraft/world/dimension/DimensionType$MonsterSettings;)V"))
+	private static void changeScale(Args args){
+		if (DimensionTypes.THE_NETHER_ID.equals(args.get(12))){
+			args.set(5, Config.netherScale);
+		}
 	}
+
 }

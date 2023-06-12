@@ -50,8 +50,8 @@ public class Config implements IMixinConfigPlugin {
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         switch (mixinClassName){
-            case mod+".mixin.MixinEntity":
-                return netherScale!=8.0 || true;
+            case mod+".mixin.Dim":
+                return netherScale!=8.0;
             default:
                 return true;
         }
